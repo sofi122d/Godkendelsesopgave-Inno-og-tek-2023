@@ -1,14 +1,24 @@
 // Selve importering af moduler
 import * as React from 'react';
-import { Text, View, Button} from 'react-native';
+import { Text, View, Button, TouchableOpacity} from 'react-native';
+import GlobalStyles from "../GlobalStyles/GlobalStyles";
+import { useState } from 'react';
 
 
 // Indtillinger
 export default function SettingsScreen({ navigation }) {
+  const [clicked, setClicked] = useState(false)
+
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={GlobalStyles.container}>
       <Text>Indstillinger</Text>
-      <Button title="Gå til hjem" onPress={() => navigation.navigate('Hjem')} />
+      <TouchableOpacity 
+        style={[GlobalStyles.btn, clicked ? GlobalStyles.defaultColor : GlobalStyles.color]} 
+        onPress={() => setClicked(!clicked)} > 
+        <Text>
+          Hej
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
